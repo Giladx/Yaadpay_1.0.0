@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<name>Opencart 2.3.X Compatibility</name>
+	<code>yaadpay_2_3_x_compatibility</code>
+	<version>7.0.0.0</version>
+	<author>Devman Extensions</author>
+	<link>https://www.devmanextensions.com</link>
+	
+	    <file error="skip" path="admin/controller/user/user_permission.php">
+	      <operation>
+	        <search trim="true"><![CDATA[if (isset($this->request->post['permission']['access'])) {]]></search>
+	        <add position="before"><![CDATA[
+	             $permiss_to_change = array('extension/payment/yaadpay');
+	            foreach ($data['permissions'] as $key => $permiss) {
+	              if(in_array($permiss, $permiss_to_change))
+	                $data['permissions'][$key] = 'extension/'.$permiss;
+	            }
+	        ]]></add>
+	      </operation>
+	    </file>
+
+	    <file error="skip" path="admin/model/user/user_group.php">
+	      <operation>
+	        <search trim="true"><![CDATA[public function editUserGroup($user_group_id, $data) {]]></search>
+	        <add position="after"><![CDATA[
+	          $permiss_to_change = array('extension/payment/yaadpay');
+	            $permiss_types = array('access', 'modify');
+
+	            foreach ($permiss_to_change as $key => $permiss) {
+	              if(in_array($permiss, $data['permission']['access']))
+	                $data['permission']['access'][] = str_replace('extension/', '', $permiss);
+	              if(in_array($permiss, $data['permission']['modify']))
+	                $data['permission']['modify'][] = str_replace('extension/', '', $permiss);
+	            }
+	        ]]></add>
+	      </operation>
+	    </file>
+
+	<file error="skip" path="catalog/controller/checkout/success.php">
+      <operation>
+        <search trim="true"><![CDATA[if (isset($this->session->data['order_id'])) {]]></search>
+        <add position="after"><![CDATA[
+          	$data['is_checkout_success'] = true;
+        ]]></add>
+      </operation>
+    </file>
+
+    <file error="skip" path="catalog/view/theme/*/template/common/success.twig">
+      <operation>
+        <search trim="true"><![CDATA[{{ header }}]]></search>
+        <add position="after"><![CDATA[
+          	{% if is_checkout_success is not empty %}
+			  <script type="text/javascript">
+			    if ( self !== top ) {
+			      top.location.href = document.location.href ;
+			    }
+			  </script>
+		{% endif %}
+        ]]></add>
+      </operation>
+    </file>
+</modification>
