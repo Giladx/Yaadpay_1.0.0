@@ -10,7 +10,7 @@
 	      <operation>
 	        <search trim="true"><![CDATA[if (isset($this->request->post['permission']['access'])) {]]></search>
 	        <add position="before"><![CDATA[
-	             $permiss_to_change = array('extension/payment/yaadpay');
+	             $permiss_to_change = array('payment/yaadpay');
 	            foreach ($data['permissions'] as $key => $permiss) {
 	              if(in_array($permiss, $permiss_to_change))
 	                $data['permissions'][$key] = 'extension/'.$permiss;
