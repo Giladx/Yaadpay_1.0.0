@@ -14,15 +14,16 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 		if ($order_info) {
 			//General
 				//Language code - If is not a Israeli customer have send a new param to remove need for identity
-					//$israeli_lang_code = 'he-il';
-					$israeli_lang_code = 'en-gb';
+					$israeli_lang_code = 'he-il';
+					//$israeli_lang_code = 'en-gb';
 
 					$data['israeli_customer'] = $this->language->get('code') == $israeli_lang_code;
-					$data['page_lang'] = $this->language->get('code') == $israeli_lang_code ? 'HEB' : 'ENG';
+					$data['page_lang'] = $this->language->get('code') == $israeli_lang_code ? 'ENG' : 'HEB';
 
 				//Currecies:  1.- NIS 2.- Dollar 3.- Euro
+				  if($order_info['currency_code'] == 'ILS')
 					$currency_code = 1;
-					if($order_info['currency_code'] == 'USD')
+					elseif($order_info['currency_code'] == 'USD')
 						$currency_code = 2;
 					elseif($order_info['currency_code'] == 'EUR')
 						$currency_code = 3;
@@ -30,6 +31,8 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 						$currency_code = 4;
 
 				$data['currency_code'] = $currency_code;
+				$data['menu'] = $this->config->get('payment_yaadpay_menu');
+				$data['postpone'] = $this->config->get('payment_yaadpay_postpone');
 				$data['type'] = $this->config->get('payment_yaadpay_type');
 				$data['iframe_width'] = $this->config->get('payment_yaadpay_iframe_width') ? $this->config->get('payment_yaadpay_iframe_width') : '400px';
 				$data['iframe_height'] = $this->config->get('payment_yaadpay_iframe_height') ? $this->config->get('payment_yaadpay_iframe_height') : '400px';
@@ -75,7 +78,7 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 			'Fild3' => rawurlencode($phone)
 		);
 
-		
+
 		$string = '';
 		foreach($sign_array as $key => $val)
 		{
@@ -114,6 +117,7 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 				*/
 				switch($status_code) {
 					case 0:
+					case 800:
 						$order_status_id = $this->config->get('payment_yaadpay_completed_status_id');
 						$this->log->write('YaadPay - Order success!');
 						$order_success = true;

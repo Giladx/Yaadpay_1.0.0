@@ -34,6 +34,14 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 			$this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=payment', true));
 		}
 
+		if (isset($this->request->post['payment_yaadpay_menu'])) {
+			$data['payment_yaadpay_menu'] = $this->request->post['payment_yaadpay_menu'];
+		}elseif(isset($store_info['payment_yaadpay_menu'])){
+			$data['payment_yaadpay_menu'] = $store_info['payment_yaadpay_menu'];
+		} else {
+			$data['payment_yaadpay_menu'] = '';
+		}
+
 		$array_lang = array(
 			//General texts
 			'heading_title',
@@ -43,15 +51,19 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 			'text_all_zones',
 			'text_yes',
 			'text_no',
+			'text_yaadpay_menu',
 			'button_save',
 			'button_cancel',
 
 			//Tabs
 			'tab_general',
 			'tab_order_status',
+			'tab_login_to_yaadpay',
 
 			//General tab
 			'entry_status',
+			'entry_postpone',
+			'help_entry_postpone',
 			'entry_terminal_id',
 			'entry_sign',
 			'your_callback_url',
@@ -78,8 +90,11 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 			'entry_voided_status',
 			'entry_geo_zone',
 			'entry_sort_order',
-			
-			
+
+			//login tab
+			'entry_login',
+
+
 		);
 
 		foreach ($array_lang as $key => $lang) {
@@ -111,13 +126,15 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 			'text' => $this->language->get('heading_title'),
 			'href' => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'], true)
 		);
-		
+
 		$data['action'] = $this->url->link('extension/payment/yaadpay', 'user_token=' . $this->session->data['user_token'], true);
 
 		$data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=payment', true);
 
 		$array_config = array(
 			'payment_yaadpay_status',
+			'payment_yaadpay_menu',
+			'payment_yaadpay_postpone',
 			'payment_yaadpay_terminal_id',
 			'payment_yaadpay_sign',
 			'payment_yaadpay_type',
@@ -126,7 +143,7 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 			'payment_yaadpay_geo_zone_id',
 			'payment_yaadpay_total',
 			'payment_yaadpay_sort_order',
-			
+
 			'payment_yaadpay_canceled_reversal_status_id',
 			'payment_yaadpay_completed_status_id',
 			'payment_yaadpay_denied_status_id',
@@ -155,7 +172,7 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
-		
+
 		$this->response->setOutput($this->load->view('extension/payment/yaadpay', $data));
 
 	}
