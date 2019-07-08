@@ -43,6 +43,7 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 				$data['terminal_id'] = $this->config->get('payment_yaadpay_terminal_id');
 				$data['order_total'] = $order_info['total'];
 				$data['customer_name'] = $buyer_full_name;
+				$data['tash'] = $this->config->get('payment_yaadpay_tash');
 				$data['order_id'] = $this->session->data['order_id'];
 				$data['payment_address'] = html_entity_decode($order_info['payment_address_1'], ENT_QUOTES, 'UTF-8');
 				$data['payment_city'] = html_entity_decode($order_info['payment_city'], ENT_QUOTES, 'UTF-8');

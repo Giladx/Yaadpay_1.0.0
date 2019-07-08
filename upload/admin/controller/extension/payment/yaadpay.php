@@ -76,6 +76,7 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 				'help_entry_iframe_width_height',
 			'entry_total',
 				'help_total',
+			'entry_tash',	
 
 			//Order Status tab
 			'entry_canceled_reversal_status',
@@ -143,7 +144,7 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 			'payment_yaadpay_geo_zone_id',
 			'payment_yaadpay_total',
 			'payment_yaadpay_sort_order',
-
+            'payment_yaadpay_tash',
 			'payment_yaadpay_canceled_reversal_status_id',
 			'payment_yaadpay_completed_status_id',
 			'payment_yaadpay_denied_status_id',

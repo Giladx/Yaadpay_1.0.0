@@ -25,7 +25,7 @@ $_['entry_type'] = 'Type';
 	$_['entry_iframe_width'] = 'Iframe width (px or %)';
 	$_['entry_iframe_height'] = 'Iframe height (px or %)';
 	$_['help_entry_iframe_width_height'] = 'Only compatible with <b>iframe type</b>';
-
+$_['entry_tash'] = 'Tash';
 $_['entry_geo_zone']				= 'Geo Zone';
 $_['entry_sort_order']				= 'Sort Order';
 $_['entry_total']					= 'Total';
