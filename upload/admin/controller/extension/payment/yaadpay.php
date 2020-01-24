@@ -66,6 +66,8 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 			'help_entry_postpone',
 			'entry_terminal_id',
 			'entry_sign',
+			'entry_user',
+			'entry_password',
 			'your_callback_url',
 			'help_your_callback_url',
 			'entry_type',
@@ -94,6 +96,7 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 
 			//login tab
 			'entry_login',
+			
 
 
 		);
@@ -138,6 +141,8 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 			'payment_yaadpay_postpone',
 			'payment_yaadpay_terminal_id',
 			'payment_yaadpay_sign',
+			'payment_yaadpay_user',
+			'payment_yaadpay_password',
 			'payment_yaadpay_type',
 				'payment_yaadpay_iframe_width',
 				'payment_yaadpay_iframe_height',
@@ -173,7 +178,9 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
-
+		$data['terminal_id'] = $this->config->get('payment_yaadpay_terminal_id');
+		$data['user'] = $this->config->get('payment_yaadpay_user');
+		$data['password'] = $this->config->get('payment_yaadpay_password');
 		$this->response->setOutput($this->load->view('extension/payment/yaadpay', $data));
 
 	}
