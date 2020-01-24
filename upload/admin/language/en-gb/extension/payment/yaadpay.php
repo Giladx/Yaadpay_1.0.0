@@ -1,3 +1,5 @@
+<!-- Author : Gilad Levi - https://bytii.cloud --> 
+<!-- github : https://github.com/Giladx/Yaadpay_1.0.0 -->
 <?php
 $version = '3.0.2';
 
@@ -10,10 +12,10 @@ $_['text_success']					= 'Success: You have modified Yaadpay payment method!';
 $_['text_edit']                     = 'Edit Yaadpay';
 $_['text_yaadpay']				 	= '<a target="_BLANK" href="https://yaadpay.yaad.net/"><img src="view/image/payment/yaadpay.png" alt="Yaadpay" title="Yaadpay" /></a>';
 $_['text_yaadpay_menu']     = 'YaadPay';
-$_['text_add_menu']         = 'Add Main Menu';
+$_['text_add_menu']         = 'Main Menu';
 // General config texts
 $_['entry_status']					= 'Status';
-$_['entry_postpone']        = 'A Deferred charge:';
+$_['entry_postpone']        = 'Deferred:';
 $_['help_entry_postpone']   = 'This will enable all store deals set as a Deferred charge,need to be apply manually on yaadpay panel | use True or False';
 $_['entry_terminal_id'] = 'Terminal id';
 $_['entry_user'] = 'User Name';

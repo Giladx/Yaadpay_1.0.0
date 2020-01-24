@@ -1,3 +1,5 @@
+<!-- Author : Gilad Levi - https://bytii.cloud --> 
+<!-- github : https://github.com/Giladx/Yaadpay_1.0.0 -->
 {{ header }}{{ column_left }}
 <div id="content">
   <div class="page-header">
@@ -52,15 +54,14 @@
 
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
-                <div class="col-sm-10">
+                <div class="col-sm-8">
                   <select name="payment_yaadpay_status" id="input-status" class="form-control">
                     <option value="1" {% if payment_yaadpay_status %} selected="selected" {% endif %}>{{ text_enabled }}</option>
                     <option value="0" {% if not payment_yaadpay_status %} selected="selected" {% endif %}>{{ text_disabled }}</option>
                   </select>
                 </div>
               </div>
-
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-menu">
                   <span data-toggle="tooltip" title="" data-original-title="Add Primary Menu In admin">{{text_add_menu}}</span></label>
                 <div class="col-sm-5">
@@ -72,8 +73,7 @@
                   </label>
                 </div>
               </div>
-
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-postpone">
                   <span data-toggle="tooltip" title="{{ help_entry_postpone }}" data-original-title="Use Postpone">{{ entry_postpone }}</span></label>
                 <div class="col-sm-5">
@@ -85,56 +85,50 @@
                   </label>
                 </div>
               </div>
-
-              <!-- optional -->
-
-              <!--<div class="form-group"> <label class="col-sm-2 control-label" for="input-postpone">{{ entry_postpone }}</label> <div class="col-sm-10"> <input type="text" name="payment_yaadpay_postpone" value="{{ payment_yaadpay_postpone }}" placeholder="{{
-              help_entry_postpone }}" id="input-postpone" class="form-control"/><span data-toggle="tooltip" title="{{ help_entry_postpone }}"> </div> </div>-->
-
-              <div class="form-group">
+              
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-terminal-id">{{ entry_terminal_id }}</label>
                 <div class="col-sm-10">
-                  <input type="text" name="payment_yaadpay_terminal_id" value="{{ payment_yaadpay_terminal_id }}" placeholder="{{ entry_terminal_id }}" id="input-terminal-id" class="form-control"/>
+                  <input type="password" name="payment_yaadpay_terminal_id" value="{{ payment_yaadpay_terminal_id }}" placeholder="{{ entry_terminal_id }}" id="input-terminal-id" class="form-control"/>
+                  <br />
+                  <input type="checkbox" onclick="showterminal()"> Show/Hide
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-sign">{{ entry_sign }}</label>
                 <div class="col-sm-10">
-                  <input type="text" name="payment_yaadpay_sign" value="{{ payment_yaadpay_sign }}" placeholder="{{ entry_sign }}" id="input-sign" class="form-control"/>
+                  <input type="password" name="payment_yaadpay_sign" value="{{ payment_yaadpay_sign }}" placeholder="{{ entry_sign }}" id="input-sign" class="form-control"/>
+                  <br />
+                  <input type="checkbox" onclick="showsign()"> Show/Hide
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-user">{{ entry_user }}</label>
                 <div class="col-sm-10">
-                  <input type="text" name="payment_yaadpay_user" value="{{ payment_yaadpay_user }}" placeholder="{{ entry_user }}" id="input-user" class="form-control"/>
+                  <input type="password" name="payment_yaadpay_user" value="{{ payment_yaadpay_user }}" placeholder="{{ entry_user }}" id="input-user" class="form-control"/>
+                  <br />
+                  <input type="checkbox" onclick="showuser()"> Show/Hide
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-password">{{ entry_password }}</label>
                 <div class="col-sm-10">
-                  <input type="text" name="payment_yaadpay_password" value="{{ payment_yaadpay_password }}" placeholder="{{ entry_password }}" id="input-password" class="form-control"/>
+                  <input type="password" name="payment_yaadpay_password" value="{{ payment_yaadpay_password }}" placeholder="{{ entry_password }}" id="input-password" class="form-control"/>
+                  <br />
+                  <input type="checkbox" onclick="showpassword()"> Show/Hide
                 </div>
               </div>
-
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-callback-url">
                   <span data-toggle="tooltip" title="{{ help_your_callback_url }}">{{ your_callback_url }}</span></label>
-                <div class="col-sm-10" style="line-height: 32px;">
+                <div class="col-sm-10" style="line-height: 32px;border: 1px solid #999;background-color: #333;color: #fff;">
                   <b>{{ payment_callback_url }}</b>
                 </div>
               </div>
-
-              <div class="form-group">
-                <label class="col-sm-2 control-label" for="tash">{{ entry_tash }}</label>
-                <div class="col-sm-10">
-                  <input type="text" name="payment_yaadpay_tash" value="{{ payment_yaadpay_tash }}" placeholder="{{ entry_tash }}" id="input-tash" class="form-control"/>
-                </div>
-              </div>
-
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-type">{{ entry_type }}</label>
                 <div class="col-sm-10">
                   <select name="payment_yaadpay_type" id="input-type" class="form-control">
@@ -143,29 +137,28 @@
                   </select>
                 </div>
               </div>
-
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-iframe-width">
                   <span data-toggle="tooltip" title="{{ help_entry_iframe_width_height }}">{{ entry_iframe_width }}</span></label>
                 <div class="col-sm-10">
                   <input type="text" name="payment_yaadpay_iframe_width" value="{{ payment_yaadpay_iframe_width }}" placeholder="{{ entry_iframe_width }}" id="input-iframe-width" class="form-control"/>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-iframe-height">
                   <span data-toggle="tooltip" title="{{ help_entry_iframe_width_height }}">{{ entry_iframe_height }}</span></label>
                 <div class="col-sm-10">
                   <input type="text" name="payment_yaadpay_iframe_height" value="{{ payment_yaadpay_iframe_height }}" placeholder="{{ entry_iframe_height }}" id="input-iframe-height" class="form-control"/>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-total">
                   <span data-toggle="tooltip" title="{{ help_total }}">{{ entry_total }}</span></label>
                 <div class="col-sm-10">
                   <input type="text" name="payment_yaadpay_total" value="{{ payment_yaadpay_total }}" placeholder="{{ entry_total }}" id="input-total" class="form-control"/>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-geo-zone">{{ entry_geo_zone }}</label>
                 <div class="col-sm-10">
                   <select name="payment_yaadpay_geo_zone_id" id="input-geo-zone" class="form-control">
@@ -181,7 +174,14 @@
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group col-lg-6">
+                <label class="col-sm-2 control-label" for="tash">{{ entry_tash }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="payment_yaadpay_tash" value="{{ payment_yaadpay_tash }}" placeholder="{{ entry_tash }}" id="input-tash" class="form-control"/>
+                </div>
+              </div>
+
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-sort-order">{{ entry_sort_order }}</label>
                 <div class="col-sm-10">
                   <input type="text" name="payment_yaadpay_sort_order" value="{{ payment_yaadpay_sort_order }}" placeholder="{{ entry_sort_order }}" id="input-sort-order" class="form-control"/>
@@ -189,7 +189,7 @@
               </div>
             </div>
             <div class="tab-pane" id="tab-status">
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-completed-status">{{ entry_completed_status }}</label>
                 <div class="col-sm-10">
                   <select name="payment_yaadpay_completed_status_id" id="input-completed-status" class="form-control">
@@ -203,7 +203,7 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-expired-status">{{ entry_expired_status }}</label>
                 <div class="col-sm-10">
                   <select name="payment_yaadpay_expired_status_id" id="input-expired-status" class="form-control">
@@ -217,7 +217,7 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group col-lg-6">
                 <label class="col-sm-2 control-label" for="input-failed-status">{{ entry_failed_status }}</label>
                 <div class="col-sm-10">
                   <select name="payment_yaadpay_failed_status_id" id="input-failed-status" class="form-control">
@@ -242,4 +242,38 @@
       </div>
     </div>
   </div>
-  {{ footer }}
+<script>
+function showterminal() {
+  var x = document.getElementById("input-terminal-id");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+function showsign() {
+  var x = document.getElementById("input-sign");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+function showuser() {
+  var x = document.getElementById("input-user");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+function showpassword() {
+  var x = document.getElementById("input-password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+{{ footer }}

@@ -1,3 +1,5 @@
+<!-- Author : Gilad Levi - https://bytii.cloud --> 
+<!-- github : https://github.com/Giladx/Yaadpay_1.0.0 -->
 <?php
 class ModelExtensionPaymentYaadpay extends Model {
 	public function getMethod($address, $total) {
