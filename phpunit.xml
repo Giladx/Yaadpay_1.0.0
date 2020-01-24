@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite name="catalog-tests">
+            <directory suffix="Test.php">./upload/catalog/</directory>
+        </testsuite>
+        <testsuite name="admin-tests">
+            <directory suffix="AdminTest.php">./test/admin/</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <env name="OC_ROOT" value="/../opencart/root-folder" />
+        <env name="HTTP_SERVER" value="http://localhost:8080/" />
+        <env name="TEST_CONFIG" value="test-config" />
+    </php>
+</phpunit>
