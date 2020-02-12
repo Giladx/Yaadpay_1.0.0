@@ -33,7 +33,6 @@
       <input type="hidden" name="UTF8" value="True">
       <input type="hidden" name="UTF8out" value="True">
       <input type="hidden" name="Order" value="{{ order_id }}">
-      <input type="hidden" name="Pritim" value="True">
       <input type="hidden" name="Info" value="{{ order_id }}">
       <input type="hidden" name="SendHesh" value="True">
       <input type="hidden" name="Coin" value="{{ currency_code }}">
@@ -65,7 +64,7 @@
   <iframe
   frameborder="0"
   id="iframe_yaadpay"
-  src="https://icom.yaad.net/p/?action=pay&Masof={{ terminal_id }}&Sign=True&Amount={{ order_total }}&Coin={{ currency_code }}&Postpone={{ postpone }}&Tash={{ tash }}&SendHesh=True&MoreData=True&ClientName={{ customer_name }}&Pritim=True&UTF8=True&UTF8out=True&Order={{ order_id }}&Info={{ order_id }}&street={{ payment_address }}&city={{ payment_city }}&zip={{ payment_postcode }}&phone={{ payment_phone }}&cell={{ payment_phone }}&email={{ payment_email }}&PageLang={{ page_lang }}{% if not israeli_customer %}&UserId=000000000{% endif %}"
+  src="https://icom.yaad.net/p/?action=pay&Masof={{ terminal_id }}&Sign=True&Amount={{ order_total }}&Coin={{ currency_code }}&Postpone={{ postpone }}&Tash={{ tash }}&SendHesh=True&MoreData=True&ClientName={{ customer_name }}&UTF8=True&UTF8out=True&Order={{ order_id }}&Info={{ order_id }}&street={{ payment_address }}&city={{ payment_city }}&zip={{ payment_postcode }}&phone={{ payment_phone }}&cell={{ payment_phone }}&email={{ payment_email }}&PageLang={{ page_lang }}{% if not israeli_customer %}&UserId=000000000{% endif %}"
   height="{{ iframe_height }}"
   width="{{ iframe_width }}"></iframe>
   <script type="text/javascript">
