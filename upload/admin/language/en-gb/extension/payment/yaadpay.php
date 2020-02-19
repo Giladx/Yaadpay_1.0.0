@@ -1,7 +1,7 @@
 <!-- Author : Gilad Levi - https://bytii.cloud --> 
 <!-- github : https://github.com/Giladx/Yaadpay_1.0.0 -->
 <?php
-$version = '7.0.5.0';
+$version = '7.0.6.0';
 
 // Heading
 $_['heading_title']					= 'Yaadpay '.$version.'';
