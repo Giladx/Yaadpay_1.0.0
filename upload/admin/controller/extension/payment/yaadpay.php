@@ -31,7 +31,11 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
-			$this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=payment', true));
+			if($this->request->post['stay']==1){
+				$this->response->redirect($this->url->link('extension/payment/yaadpay', '&store_id='.$data['store_id'].'&user_token=' . $this->session->data['user_token'] , true));
+			}else{
+			    $this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=payment', true));
+			}
 		}
 
 		if (isset($this->request->post['payment_yaadpay_menu'])) {
@@ -66,19 +70,21 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 			'help_entry_postpone',
 			'entry_terminal_id',
 			'entry_sign',
+			'entry_passp',
 			'entry_user',
 			'entry_password',
 			'your_callback_url',
 			'help_your_callback_url',
 			'entry_type',
-				'text_type_redirect',
-				'text_type_iframe',
-				'entry_iframe_width',
-				'entry_iframe_height',
-				'help_entry_iframe_width_height',
+			'text_type_redirect',
+			'text_type_iframe',
+			'entry_iframe_width',
+			'entry_iframe_height',
+			'help_entry_iframe_width_height',
 			'entry_total',
-				'help_total',
-			'entry_tash',	
+			'help_total',
+			'entry_tash',
+			'entry_tmp',	
 
 			//Order Status tab
 			'entry_canceled_reversal_status',
@@ -141,15 +147,17 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 			'payment_yaadpay_postpone',
 			'payment_yaadpay_terminal_id',
 			'payment_yaadpay_sign',
+			'payment_yaadpay_passp',
 			'payment_yaadpay_user',
 			'payment_yaadpay_password',
 			'payment_yaadpay_type',
-				'payment_yaadpay_iframe_width',
-				'payment_yaadpay_iframe_height',
+			'payment_yaadpay_iframe_width',
+			'payment_yaadpay_iframe_height',
 			'payment_yaadpay_geo_zone_id',
 			'payment_yaadpay_total',
 			'payment_yaadpay_sort_order',
             'payment_yaadpay_tash',
+			'payment_yaadpay_tmp',
 			'payment_yaadpay_canceled_reversal_status_id',
 			'payment_yaadpay_completed_status_id',
 			'payment_yaadpay_denied_status_id',

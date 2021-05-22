@@ -5,6 +5,7 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 
 		$data['button_confirm'] = $this->language->get('button_confirm');
 		$data['text_tash'] = $this->language->get('text_tash');
+		$data['text_tmp'] = $this->language->get('text_tmp');
 
 		$this->load->model('checkout/order');
 
@@ -41,9 +42,11 @@ class ControllerExtensionPaymentYaadpay extends Controller {
 
 			//Fields to payment form
 				$data['terminal_id'] = $this->config->get('payment_yaadpay_terminal_id');
+				$data['passp'] = $this->config->get('payment_yaadpay_passp');
 				$data['order_total'] = $order_info['total'];
 				$data['customer_name'] = $buyer_full_name;
 				$data['tash'] = $this->config->get('payment_yaadpay_tash');
+				$data['tmp'] = $this->config->get('payment_yaadpay_tmp');
 				$data['order_id'] = $this->session->data['order_id'];
 				$data['payment_address'] = html_entity_decode($order_info['payment_address_1'], ENT_QUOTES, 'UTF-8');
 				$data['payment_city'] = html_entity_decode($order_info['payment_city'], ENT_QUOTES, 'UTF-8');

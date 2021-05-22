@@ -23,6 +23,24 @@
             <option value="16">16</option>
             <option value="17">17</option>
             <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+            <option value="32">32</option>
+            <option value="33">33</option>
+            <option value="34">34</option>
+            <option value="35">35</option>
+            <option value="36">36</option>
           </select>
         </div>
       </div>
@@ -33,13 +51,16 @@
 {% if type == 'redirect' %}
   <form id="yaadpay_form" action="https://icom.yaad.net/p/" method="post">
     <!--Required Parameter -->
+    
       <input type="hidden" name="action" value="pay">
       <input type="hidden" name="Masof" value="{{ terminal_id }}">
-      <input type="hidden" name="Sign" value="True">
+      <input type="hidden" name="Sign" value="False">
       <input type="hidden" name="Amount" value="{{ order_total }}">
+      <input type="hidden" name="PassP" value="{{ passp }}">
 
-      <!-- TODO: PAGOS PARTIDOS SOLO PARA CLIENTES DE ISRAEL -->
+      <!-- Done: PAGOS PARTIDOS SOLO PARA CLIENTES DE ISRAEL -->
       <input type="hidden" name="Tash" value="{{ tash }}">
+       <input type="hidden" name="tmp" value="{{ tmp }}">
       <input type="hidden" name="MoreData" value="True">
       <input type="hidden" name="ClientName" value="{{ customer_name }}">
       <input type="hidden" name="UTF8" value="True">
@@ -76,9 +97,9 @@
   <iframe
   frameborder="0"
   id="iframe_yaadpay"
-  src="https://icom.yaad.net/p/?action=pay&Masof={{ terminal_id }}&Sign=True&Amount={{ order_total }}&Coin={{ currency_code }}&Postpone={{ postpone }}&Tash={{ tash }}&SendHesh=True&MoreData=True&ClientName={{ customer_name }}&UTF8=True&UTF8out=True&Order={{ order_id }}&Info={{ order_id }}&street={{ payment_address }}&city={{ payment_city }}&zip={{ payment_postcode }}&phone={{ payment_phone }}&cell={{ payment_phone }}&email={{ payment_email }}&PageLang={{ page_lang }}{% if not israeli_customer %}&UserId=000000000{% endif %}"
+  src="https://icom.yaad.net/p/?action=pay&Masof={{ terminal_id }}&Sign=False&Amount={{ order_total }}&Coin={{ currency_code }}&Postpone={{ postpone }}&Tash={{ tash }}&tmp={{ tmp }}&SendHesh=True&MoreData=True&ClientName={{ customer_name }}&UTF8=True&UTF8out=True&Order={{ order_id }}&Info={{ order_id }}&street={{ payment_address }}&city={{ payment_city }}&zip={{ payment_postcode }}&phone={{ payment_phone }}&cell={{ payment_phone }}&email={{ payment_email }}&PageLang={{ page_lang }}{% if not israeli_customer %}&UserId=000000000{% endif %}"
   height="{{ iframe_height }}"
-  width="{{ iframe_width }}"></iframe>
+  width="{{ iframe_width }}" sandbox="allow-top-navigation allow-scripts allow-forms"></iframe>
   <script type="text/javascript">
     function chage_iframe_yaadpay_src(payment_tash)
     {
